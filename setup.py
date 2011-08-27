@@ -1,4 +1,5 @@
 from distutils.core import setup
+
 setup(name='ScrapyCouchDB',
       version='0.1',
       license='Apache License, Version 2.0',
