@@ -4,7 +4,7 @@ It's a pipeline which allow you to store scrapy items in CouchDB database.
 
 Install
 =======
-   pip install "CouchDB"
+   pip install "ScrapyCouchDB"
 
 Configure your settings.py:
 ----------------------------
