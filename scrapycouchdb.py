@@ -23,9 +23,20 @@ class CouchDBPipeline(object):
             old = self.db[data['_id']]
             data['_rev'] = old['_rev']
         except couchdb.http.ResourceNotFound:
-            pass
-        self.db.save(data)
-        log.msg("Item wrote to CouchDB database %s/%s" %
+            change = True
+
+        #Only save the document if new content
+        if data.has_key('_rev'):
+            change = False
+            for key in data.keys():
+                if not old.has_key(key):
+                    change = True
+                else:
+                    if old[key] != data[key]:
+                        change = True
+        if change:
+            self.db.save(data)
+            log.msg("Item wrote to CouchDB database %s/%s" %
                     (settings['COUCHDB_SERVER'], settings['COUCHDB_DB']),
                     level=log.DEBUG, spider=spider)  
         return item

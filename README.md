@@ -22,7 +22,10 @@ Configure your settings.py:
 Changelog
 =========
 0.1
-Initial version
+* Initial version
+
+0.2
+* Do not create a new revision if document already exist with same data
 
 Licence
 =======
